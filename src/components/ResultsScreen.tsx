@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGameState, useGameDispatch } from '../context/GameContext';
 import { clearGameState } from '../logic/storage';
+import ShareButton from './ShareButton';
 import styles from './ResultsScreen.module.css';
 
 interface Debt {
@@ -53,6 +55,9 @@ const ResultsScreen: React.FC = () => {
 
   const debts = computeDebts(state.players.map(p => p.balance));
 
+  const [confirmingReset, setConfirmingReset] = useState(false);
+  const [confirmInput, setConfirmInput] = useState('');
+
   const handleNewGame = () => {
     clearGameState();
     dispatch({ type: 'NEW_GAME' });
@@ -99,9 +104,42 @@ const ResultsScreen: React.FC = () => {
         )}
       </div>
 
-      <button className={styles.newGameButton} onClick={handleNewGame}>
+      <ShareButton />
+
+      <button className={styles.newGameButton} onClick={() => setConfirmingReset(true)}>
         {t('results.newGame')}
       </button>
+
+      {confirmingReset && (
+        <div className={styles.confirmOverlay}>
+          <div className={styles.confirmPanel}>
+            <p className={styles.confirmText}>{t('confirm.typePlayerName')}</p>
+            <input
+              className={styles.confirmInput}
+              type="text"
+              placeholder={t('confirm.placeholder')}
+              value={confirmInput}
+              onChange={e => setConfirmInput(e.target.value)}
+              autoFocus
+            />
+            <div className={styles.confirmActions}>
+              <button
+                className={styles.confirmCancel}
+                onClick={() => { setConfirmingReset(false); setConfirmInput(''); }}
+              >
+                {t('confirm.cancel')}
+              </button>
+              <button
+                className={styles.confirmOk}
+                disabled={!state.players.some(p => p.name.toLowerCase() === confirmInput.trim().toLowerCase())}
+                onClick={handleNewGame}
+              >
+                {t('results.newGame')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

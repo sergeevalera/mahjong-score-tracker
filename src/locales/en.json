@@ -45,6 +45,16 @@
     "newGame": "New game",
     "place": "place"
   },
+  "confirm": {
+    "typePlayerName": "Type any player's name to confirm",
+    "placeholder": "Player name",
+    "cancel": "Cancel"
+  },
+  "share": {
+    "button": "Share game",
+    "copied": "Link copied!",
+    "title": "Mahjong Score Tracker"
+  },
   "settings": {
     "language": "Language"
   }

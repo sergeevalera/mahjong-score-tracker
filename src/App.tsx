@@ -13,8 +13,22 @@ const AppContent: React.FC = () => {
   const { t } = useTranslation();
   const state = useGameState();
   const [screen, setScreen] = useState<Screen>('game');
+  const [prefillScores, setPrefillScores] = useState<string[] | undefined>();
+  const [prefillWinner, setPrefillWinner] = useState<number | null | undefined>();
 
   const hasGame = state.players.length > 0;
+
+  const handleUndo = (scores: string[], winnerIndex: number | null) => {
+    setPrefillScores(scores);
+    setPrefillWinner(winnerIndex);
+    setScreen('game');
+  };
+
+  const handleShowHistory = () => {
+    setPrefillScores(undefined);
+    setPrefillWinner(undefined);
+    setScreen('history');
+  };
 
   return (
     <div className="app">
@@ -25,10 +39,14 @@ const AppContent: React.FC = () => {
       <main>
         {!hasGame && <SetupScreen />}
         {hasGame && !state.isFinished && screen === 'game' && (
-          <GameScreen onShowHistory={() => setScreen('history')} />
+          <GameScreen
+            onShowHistory={handleShowHistory}
+            initialScores={prefillScores}
+            initialWinnerIndex={prefillWinner}
+          />
         )}
         {hasGame && !state.isFinished && screen === 'history' && (
-          <HistoryScreen onBack={() => setScreen('game')} />
+          <HistoryScreen onBack={() => setScreen('game')} onUndo={handleUndo} />
         )}
         {hasGame && state.isFinished && <ResultsScreen />}
       </main>

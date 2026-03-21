@@ -1,0 +1,14 @@
+.share {
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  background: transparent;
+  color: #2C5F4A;
+  border: 1px solid #CBA46E;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.share:hover {
+  background: #EFE5D0;
+}

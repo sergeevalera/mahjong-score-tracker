@@ -4,15 +4,22 @@ import styles from './HistoryScreen.module.css';
 
 interface HistoryScreenProps {
   onBack: () => void;
+  onUndo: (scores: string[], winnerIndex: number | null) => void;
 }
 
-const HistoryScreen: React.FC<HistoryScreenProps> = ({ onBack }) => {
+const HistoryScreen: React.FC<HistoryScreenProps> = ({ onBack, onUndo }) => {
   const { t } = useTranslation();
   const state = useGameState();
   const dispatch = useGameDispatch();
 
   const handleUndo = () => {
+    const lastRound = state.rounds[state.rounds.length - 1];
     dispatch({ type: 'UNDO_LAST' });
+    if (lastRound.isDraw) {
+      onUndo(['', '', '', ''], null);
+    } else {
+      onUndo(lastRound.scores.map(String), lastRound.winnerIndex);
+    }
   };
 
   return (

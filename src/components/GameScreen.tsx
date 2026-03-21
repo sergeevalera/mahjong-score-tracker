@@ -3,21 +3,27 @@ import { useTranslation } from 'react-i18next';
 import { useGameState, useGameDispatch } from '../context/GameContext';
 import HandResult from './HandResult';
 import type { Round } from '../types';
+import { clearGameState } from '../logic/storage';
+import ShareButton from './ShareButton';
 import styles from './GameScreen.module.css';
 
 interface GameScreenProps {
   onShowHistory: () => void;
+  initialScores?: string[];
+  initialWinnerIndex?: number | null;
 }
 
-const GameScreen: React.FC<GameScreenProps> = ({ onShowHistory }) => {
+const GameScreen: React.FC<GameScreenProps> = ({ onShowHistory, initialScores, initialWinnerIndex }) => {
   const { t } = useTranslation();
   const state = useGameState();
   const dispatch = useGameDispatch();
 
-  const [scores, setScores] = useState(['', '', '', '']);
-  const [winnerIndex, setWinnerIndex] = useState<number | null>(null);
+  const [scores, setScores] = useState(initialScores ?? ['', '', '', '']);
+  const [winnerIndex, setWinnerIndex] = useState<number | null>(initialWinnerIndex ?? null);
   const [shownResult, setShownResult] = useState<Round | null>(null);
   const [prevRoundCount, setPrevRoundCount] = useState(state.rounds.length);
+  const [confirmingReset, setConfirmingReset] = useState(false);
+  const [confirmInput, setConfirmInput] = useState('');
 
   // Detect newly added round (setState during render is fine for derived state)
   if (state.rounds.length > prevRoundCount) {
@@ -141,10 +147,50 @@ const GameScreen: React.FC<GameScreenProps> = ({ onShowHistory }) => {
         </button>
       </div>
 
-      {state.rounds.length > 0 && (
-        <button className={styles.historyButton} onClick={onShowHistory}>
-          {t('history.title')} ({state.rounds.length})
+      <div className={styles.footer}>
+        {state.rounds.length > 0 && (
+          <button className={styles.historyButton} onClick={onShowHistory}>
+            {t('history.title')} ({state.rounds.length})
+          </button>
+        )}
+        <ShareButton />
+        <button
+          className={styles.newGameButton}
+          onClick={() => setConfirmingReset(true)}
+        >
+          {t('results.newGame')}
         </button>
+      </div>
+
+      {confirmingReset && (
+        <div className={styles.confirmOverlay}>
+          <div className={styles.confirmPanel}>
+            <p className={styles.confirmText}>{t('confirm.typePlayerName')}</p>
+            <input
+              className={styles.confirmInput}
+              type="text"
+              placeholder={t('confirm.placeholder')}
+              value={confirmInput}
+              onChange={e => setConfirmInput(e.target.value)}
+              autoFocus
+            />
+            <div className={styles.confirmActions}>
+              <button
+                className={styles.confirmCancel}
+                onClick={() => { setConfirmingReset(false); setConfirmInput(''); }}
+              >
+                {t('confirm.cancel')}
+              </button>
+              <button
+                className={styles.confirmOk}
+                disabled={!state.players.some(p => p.name.toLowerCase() === confirmInput.trim().toLowerCase())}
+                onClick={() => { clearGameState(); dispatch({ type: 'NEW_GAME' }); }}
+              >
+                {t('results.newGame')}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

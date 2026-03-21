@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useReducer, useEffect, type Dispatch } from 'react';
+import { createContext, useContext, useReducer, useCallback, type Dispatch } from 'react';
 import type { GameState } from '../types';
 import { gameReducer, type GameAction } from '../logic/gameState';
 import { saveGameState, loadGameState } from '../logic/storage';
@@ -21,11 +21,15 @@ export const useGameDispatch = () => useContext(GameDispatchContext);
 
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const saved = loadGameState();
-  const [state, dispatch] = useReducer(gameReducer, saved ?? emptyState);
+  const [state, rawDispatch] = useReducer(gameReducer, saved ?? emptyState);
 
-  useEffect(() => {
-    if (state.players.length > 0) {
-      saveGameState(state);
+  const dispatch = useCallback((action: GameAction) => {
+    rawDispatch(action);
+    // Save synchronously right after reducer runs.
+    // We compute the next state ourselves to avoid the useEffect delay.
+    const nextState = gameReducer(state, action);
+    if (nextState.players.length > 0) {
+      saveGameState(nextState);
     }
   }, [state]);
 

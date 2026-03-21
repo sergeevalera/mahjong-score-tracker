@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/mahjong-score-tracker/',
+  base: process.env.GITHUB_ACTIONS ? '/mahjong-score-tracker/' : '/',
   plugins: [
     react(),
     VitePWA({
