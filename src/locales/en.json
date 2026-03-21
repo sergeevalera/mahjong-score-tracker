@@ -1,0 +1,51 @@
+{
+  "app": {
+    "title": "Mahjong Score Tracker"
+  },
+  "winds": {
+    "east": "East",
+    "south": "South",
+    "west": "West",
+    "north": "North"
+  },
+  "setup": {
+    "playerName": "Player name",
+    "selectEast": "Who is East?",
+    "startGame": "Start game"
+  },
+  "game": {
+    "round": "Round",
+    "hand": "Hand",
+    "score": "Score",
+    "mahjong": "Mahjong",
+    "draw": "Draw",
+    "calculate": "Calculate",
+    "balance": "Balance",
+    "handResult": "Hand result",
+    "pays": "→",
+    "balanceChange": "Balance change",
+    "continue": "Continue",
+    "drawNoChanges": "Draw — no balance changes"
+  },
+  "history": {
+    "title": "History",
+    "undo": "Undo last hand",
+    "winner": "Winner",
+    "drawResult": "Draw",
+    "empty": "No hands played yet",
+    "back": "Back",
+    "east": "East"
+  },
+  "results": {
+    "title": "Game Results",
+    "finalBalances": "Final balances",
+    "debts": "Debt summary",
+    "owes": "owes",
+    "noDebts": "No debts",
+    "newGame": "New game",
+    "place": "place"
+  },
+  "settings": {
+    "language": "Language"
+  }
+}

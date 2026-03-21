@@ -1,0 +1,200 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.status {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.handTotal {
+  margin-left: 0.4rem;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.balances {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.balanceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
+
+.eastPlayer {
+  border-color: #e74c3c;
+  background: #fdf2f2;
+  animation: eastHighlight 0.4s ease-out;
+}
+
+@keyframes eastHighlight {
+  from { border-color: transparent; }
+  to { border-color: #e74c3c; }
+}
+
+.playerName {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.eastBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  font-size: 0.75rem;
+  background: #e74c3c;
+  color: white;
+  border-radius: 4px;
+}
+
+.balanceValue {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.playerInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.inputLabel {
+  font-size: 0.85rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.inputRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.scoreInput {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.scoreInput:focus {
+  border-color: #4a90d9;
+}
+
+/* Hide number input spinners */
+.scoreInput::-webkit-inner-spin-button,
+.scoreInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.scoreInput[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.mahjongButton {
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background: #f5f5f5;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.mahjongActive {
+  background: #f39c12;
+  color: white;
+  border-color: #e67e22;
+  animation: winnerGlow 0.3s ease-out;
+}
+
+@keyframes winnerGlow {
+  0% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.5); }
+  100% { box-shadow: 0 0 0 4px rgba(243, 156, 18, 0); }
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.calculateButton {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.calculateButton:hover:not(:disabled) {
+  background: #219a52;
+}
+
+.calculateButton:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.drawButton {
+  padding: 0.75rem 1.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: #7f8c8d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.drawButton:hover {
+  background: #6c7a7b;
+}
+
+.historyButton {
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  background: transparent;
+  color: #4a90d9;
+  border: 1px solid #4a90d9;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.historyButton:hover {
+  background: #eef4fc;
+}

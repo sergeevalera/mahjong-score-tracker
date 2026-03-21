@@ -1,0 +1,147 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.standings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.standingRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  animation: slideIn 0.3s ease-out both;
+}
+
+.standingRow:nth-child(1) { animation-delay: 0.05s; }
+.standingRow:nth-child(2) { animation-delay: 0.1s; }
+.standingRow:nth-child(3) { animation-delay: 0.15s; }
+.standingRow:nth-child(4) { animation-delay: 0.2s; }
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.rank {
+  width: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.name {
+  flex: 1;
+  font-weight: 600;
+}
+
+.positive {
+  color: #27ae60;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.negative {
+  color: #e74c3c;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.zero {
+  color: #888;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.noDebts {
+  color: #888;
+  font-style: italic;
+}
+
+.debtList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.debtRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #fdf2f2;
+  border-radius: 6px;
+}
+
+.debtFrom {
+  flex: 1;
+  text-align: right;
+  font-weight: 600;
+}
+
+.debtArrow {
+  color: #888;
+  flex-shrink: 0;
+}
+
+.debtTo {
+  flex: 1;
+  font-weight: 600;
+}
+
+.debtAmount {
+  font-weight: 700;
+  min-width: 3rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.newGameButton {
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.newGameButton:hover {
+  background: #219a52;
+}

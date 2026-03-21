@@ -1,0 +1,109 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1rem;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.drawText {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+.transfers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.transferRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.from {
+  font-weight: 600;
+  flex: 1;
+  text-align: right;
+}
+
+.arrow {
+  color: #888;
+  flex-shrink: 0;
+}
+
+.to {
+  font-weight: 600;
+  flex: 1;
+}
+
+.amount {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 3rem;
+  text-align: right;
+}
+
+.balanceChanges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.changeRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0.75rem;
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+
+.positive {
+  color: #27ae60;
+  font-weight: 700;
+}
+
+.negative {
+  color: #e74c3c;
+  font-weight: 700;
+}
+
+.zero {
+  color: #888;
+  font-weight: 700;
+}
+
+.continueButton {
+  padding: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: #4a90d9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.continueButton:hover {
+  background: #3a7bc8;
+}

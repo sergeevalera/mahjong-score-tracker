@@ -1,0 +1,86 @@
+.setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 360px;
+}
+
+.playerRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nameInput {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.nameInput:focus {
+  border-color: #4a90d9;
+}
+
+.eastButton {
+  width: 44px;
+  height: 44px;
+  font-size: 1.25rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.eastActive {
+  background: #e74c3c;
+  color: white;
+  border-color: #c0392b;
+  animation: eastPulse 0.3s ease-out;
+}
+
+@keyframes eastPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.eastHint {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.startButton {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.startButton:hover:not(:disabled) {
+  background: #219a52;
+}
+
+.startButton:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
