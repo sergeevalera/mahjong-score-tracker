@@ -11,6 +11,7 @@
   text-align: center;
   margin: 0;
   font-size: 1.3rem;
+  color: #3E2C25;
 }
 
 .section {
@@ -22,7 +23,7 @@
 .subtitle {
   margin: 0;
   font-size: 1rem;
-  color: #555;
+  color: #5C3D2E;
 }
 
 .standings {
@@ -36,59 +37,55 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.6rem 0.75rem;
-  background: #f5f5f5;
+  background: #fff;
+  border: 1px solid #E5D4BB;
   border-radius: 8px;
   animation: slideIn 0.3s ease-out both;
 }
 
 .standingRow:nth-child(1) { animation-delay: 0.05s; }
-.standingRow:nth-child(2) { animation-delay: 0.1s; }
+.standingRow:nth-child(2) { animation-delay: 0.10s; }
 .standingRow:nth-child(3) { animation-delay: 0.15s; }
-.standingRow:nth-child(4) { animation-delay: 0.2s; }
+.standingRow:nth-child(4) { animation-delay: 0.20s; }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 .rank {
   width: 1.5rem;
   text-align: center;
-  font-weight: 700;
   font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .name {
   flex: 1;
   font-weight: 600;
+  color: #3E2C25;
 }
 
 .positive {
-  color: #27ae60;
+  color: #2C5F4A;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 
 .negative {
-  color: #e74c3c;
+  color: #B85442;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 
 .zero {
-  color: #888;
+  color: #9C7A5A;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 
 .noDebts {
-  color: #888;
+  color: #9C7A5A;
   font-style: italic;
 }
 
@@ -103,7 +100,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
-  background: #fdf2f2;
+  background: #FFF6F4;
+  border: 1px solid #E5D4BB;
   border-radius: 6px;
 }
 
@@ -111,16 +109,18 @@
   flex: 1;
   text-align: right;
   font-weight: 600;
+  color: #3E2C25;
 }
 
 .debtArrow {
-  color: #888;
+  color: #CBA46E;
   flex-shrink: 0;
 }
 
 .debtTo {
   flex: 1;
   font-weight: 600;
+  color: #3E2C25;
 }
 
 .debtAmount {
@@ -128,13 +128,14 @@
   min-width: 3rem;
   text-align: right;
   font-variant-numeric: tabular-nums;
+  color: #B85442;
 }
 
 .newGameButton {
   padding: 0.75rem;
   font-size: 1.1rem;
   font-weight: 600;
-  background: #27ae60;
+  background: #2C5F4A;
   color: white;
   border: none;
   border-radius: 8px;
@@ -143,5 +144,5 @@
 }
 
 .newGameButton:hover {
-  background: #219a52;
+  background: #1E4433;
 }

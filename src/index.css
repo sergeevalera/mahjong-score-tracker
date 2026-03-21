@@ -16,8 +16,8 @@ body {
     'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: #222;
-  background: #fff;
+  color: #3E2C25;
+  background: #FAF4EB;
   min-height: 100dvh;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
@@ -34,7 +34,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
-  background: #27ae60;
+  background: #2C5F4A;
   color: white;
   position: sticky;
   top: 0;
@@ -52,23 +52,15 @@ body {
   padding-bottom: 1.5rem;
 }
 
-/* Screen entrance animation */
 .app main > * {
   animation: fadeIn 0.2s ease-out;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Global button active states for mobile feedback */
 button {
   -webkit-user-select: none;
   user-select: none;

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useReducer, useEffect, type Dispatch } from 'react';
 import type { GameState } from '../types';
 import { gameReducer, type GameAction } from '../logic/gameState';

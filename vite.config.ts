@@ -12,8 +12,8 @@ export default defineConfig({
         name: 'Маджонг-счётчик',
         short_name: 'Маджонг',
         description: 'Счётчик очков для Ма-Джонга',
-        theme_color: '#27ae60',
-        background_color: '#ffffff',
+        theme_color: '#2C5F4A',
+        background_color: '#FAF4EB',
         display: 'standalone',
         start_url: '/',
         icons: [
