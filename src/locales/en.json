@@ -34,7 +34,8 @@
     "drawResult": "Draw",
     "empty": "No hands played yet",
     "back": "Back",
-    "east": "East"
+    "east": "East",
+    "prevailing": "Prevailing wind"
   },
   "results": {
     "title": "Game Results",
