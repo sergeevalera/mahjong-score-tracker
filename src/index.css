@@ -52,6 +52,13 @@ body {
   padding-bottom: 1.5rem;
 }
 
+.app-footer {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #999;
+}
+
 .app main > * {
   animation: fadeIn 0.2s ease-out;
 }

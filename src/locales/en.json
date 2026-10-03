@@ -1,6 +1,7 @@
 {
   "app": {
-    "title": "Mahjong Score Tracker"
+    "title": "Mahjong Score Tracker",
+    "version": "Version {{version}}"
   },
   "winds": {
     "east": "East",

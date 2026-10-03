@@ -50,6 +50,9 @@ const AppContent: React.FC = () => {
         )}
         {hasGame && state.isFinished && <ResultsScreen />}
       </main>
+      <footer className="app-footer">
+        {t('app.version', { version: __APP_VERSION__ })}
+      </footer>
     </div>
   );
 };

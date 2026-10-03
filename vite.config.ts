@@ -1,10 +1,25 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { execSync } from 'node:child_process'
+
+const getCommitHash = (): string => {
+  if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA.slice(0, 7)
+  try {
+    return execSync('git rev-parse --short HEAD').toString().trim()
+  } catch {
+    return 'dev'
+  }
+}
+
+const appVersion = `${getCommitHash()} · ${new Date().toISOString().slice(0, 10)}`
 
 // https://vite.dev/config/
 export default defineConfig({
   base: process.env.GITHUB_ACTIONS ? '/mahjong-score-tracker/' : '/',
+  define: {
+    __APP_VERSION__: JSON.stringify(appVersion),
+  },
   plugins: [
     react(),
     VitePWA({
