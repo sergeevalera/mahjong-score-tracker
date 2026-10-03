@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { useGameState, useGameDispatch } from '../context/GameContext';
-import { getPrevailingIndex } from '../logic/gameState';
 import styles from './HistoryScreen.module.css';
 
 interface HistoryScreenProps {
@@ -47,13 +46,8 @@ const HistoryScreen: React.FC<HistoryScreenProps> = ({ onBack, onUndo }) => {
                     {t(`winds.${round.windRound}`)} {round.windRoundNumber}/4
                   </span>
                   <span className={styles.eastInfo}>
-                    {t('history.east')}: {state.players[round.eastIndex].name}
+                    {t('history.prevailing')}: {state.players[round.eastIndex].name}
                   </span>
-                  {round.windRound !== 'east' && (
-                    <span className={styles.eastInfo}>
-                      {t('history.prevailing')}: {state.players[getPrevailingIndex(round.eastIndex, round.windRound)].name}
-                    </span>
-                  )}
                 </div>
 
                 {round.isDraw ? (

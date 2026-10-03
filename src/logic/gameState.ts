@@ -7,12 +7,6 @@ export const getWindRound = (roundNumber: number): WindRound => {
   return WIND_ORDER[Math.floor((roundNumber - 1) / 4)];
 };
 
-// Player whose seat wind matches the prevailing (round) wind — gets the ×2 multiplier.
-// Seat winds follow the dealer order from the East seat: East → South → West → North.
-export const getPrevailingIndex = (eastIndex: number, windRound: WindRound): number => {
-  return (eastIndex + WIND_ORDER.indexOf(windRound)) % 4;
-};
-
 const getWindRoundNumber = (roundNumber: number): number => {
   return ((roundNumber - 1) % 4) + 1;
 };
@@ -50,7 +44,7 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
       const { transfers, balanceChanges } = calculateHand({
         scores,
         winnerIndex,
-        eastIndex: getPrevailingIndex(state.currentEastIndex, getWindRound(state.currentRound)),
+        eastIndex: state.currentEastIndex,
       });
 
       const newPlayers = state.players.map((p, i) => ({
@@ -71,9 +65,11 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
       };
 
       const nextRound = state.currentRound + 1;
+      // On wind change the winner of the last hand takes the prevailing wind
+      const windChanges = state.currentRound % 4 === 0;
       const nextEast =
-        winnerIndex === state.currentEastIndex
-          ? state.currentEastIndex
+        windChanges || winnerIndex === state.currentEastIndex
+          ? winnerIndex
           : (state.currentEastIndex + 1) % 4;
 
       return {

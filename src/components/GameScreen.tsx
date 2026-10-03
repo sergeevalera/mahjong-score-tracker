@@ -4,7 +4,7 @@ import { useGameState, useGameDispatch } from '../context/GameContext';
 import HandResult from './HandResult';
 import type { Round } from '../types';
 import { clearGameState } from '../logic/storage';
-import { getPrevailingIndex, getWindRound } from '../logic/gameState';
+import { getWindRound } from '../logic/gameState';
 import ShareButton from './ShareButton';
 import styles from './GameScreen.module.css';
 
@@ -76,7 +76,6 @@ const GameScreen: React.FC<GameScreenProps> = ({ onShowHistory, initialScores, i
   }
 
   const windRoundKey = getWindRound(state.currentRound);
-  const prevailingIndex = getPrevailingIndex(state.currentEastIndex, windRoundKey);
   const windRoundNumber = ((state.currentRound - 1) % 4) + 1;
 
   return (
@@ -94,12 +93,11 @@ const GameScreen: React.FC<GameScreenProps> = ({ onShowHistory, initialScores, i
         {state.players.map((p, i) => (
           <div
             key={i}
-            className={`${styles.balanceItem} ${i === prevailingIndex ? styles.eastPlayer : ''}`}
+            className={`${styles.balanceItem} ${i === state.currentEastIndex ? styles.eastPlayer : ''}`}
           >
             <span className={styles.playerName}>
               {p.name}
-              {i === state.currentEastIndex && <span className={styles.eastBadge}>東</span>}
-              {i === prevailingIndex && i !== state.currentEastIndex && (
+              {i === state.currentEastIndex && (
                 <span className={styles.eastBadge}>{WIND_KANJI[windRoundKey]}</span>
               )}
             </span>
